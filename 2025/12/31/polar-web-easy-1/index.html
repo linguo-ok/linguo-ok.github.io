@@ -100,8 +100,10 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-1.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-2.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-5.png">
 <meta property="article:published_time" content="2025-12-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-02T10:46:05.854Z">
+<meta property="article:modified_time" content="2026-01-02T11:01:48.764Z">
 <meta property="article:author" content="linguo">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary_large_image">
@@ -768,6 +770,10 @@
 <p>php:&#x2F;&#x2F;input 协议可以访问请求的原始数据,配合文件包含漏洞可以将post请求体中的内容当做文件内容执行,从而实现任意代码执行,需要注意的是,当表单 <code>enctype=multipart/form-data</code>时,php:&#x2F;&#x2F;input将会无效</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php">data:<span class="hljs-comment">//text/plain,&lt;?php system($_GET[&#x27;a&#x27;]);?&gt;</span><br>php:<span class="hljs-comment">//input  post请求体：&lt;?php system($_GET[&#x27;a&#x27;]);?&gt;</span><br></code></pre></td></tr></table></figure>
 </blockquote>
+<p>此题我们就需要使用到 <code>php://filter</code> 读取，别忘了要绕过 <strong>str_replace</strong> 的限制</p>
+<p><img src="/2025/12/31/polar-web-easy-1/16-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>读取得到 base64 加密的字符串，解密即可</p>
+<p><img src="/2025/12/31/polar-web-easy-1/16-5.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
