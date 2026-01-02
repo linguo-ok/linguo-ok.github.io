@@ -82,8 +82,26 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/9-5.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/9-6.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/10-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/11-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/11-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/12-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/12-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/13-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/13-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/13-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/13-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/14-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/14-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/15-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/15-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/15-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/15-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/15-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/16-3.png">
 <meta property="article:published_time" content="2025-12-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-02T05:00:03.913Z">
+<meta property="article:modified_time" content="2026-01-02T10:46:05.854Z">
 <meta property="article:author" content="linguo">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,7 +298,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          6.4k 字
         
       </span>
     
@@ -291,7 +309,7 @@
         
         
         
-          37 分钟
+          54 分钟
         
       </span>
     
@@ -630,14 +648,126 @@
 <p>substr 函数用于从字符串中提取子字符串</p>
 <p><code>===</code> 表示强相等，要求比较的两个值在类型和值上都必须完全相等</p>
 </blockquote>
-<p>从这段条件来看，我们输入的值经过加密后第2、15、18位必须相等（字母&#x2F;数字）</p>
+<p>从这段条件来看，我们输入的值经过加密后第1、14、17个字符（索引从0开始）相同</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">(<span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$pass</span>, <span class="hljs-number">1</span>,<span class="hljs-number">1</span>))+<span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$pass</span>, <span class="hljs-number">14</span>,<span class="hljs-number">1</span>))+<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$pass</span>, <span class="hljs-number">17</span>,<span class="hljs-number">1</span>))/<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$pass</span>, <span class="hljs-number">1</span>,<span class="hljs-number">1</span>)===<span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$pass</span>, <span class="hljs-number">31</span>,<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>intval 函数用于获取变量的整数值，通过使用指定的进制（默认是十进制）来转换变量，并返回其整数值</p>
 </blockquote>
-<p>这部分就要求输入的值在加密后第2、15、18位的字符（数字&#x2F;字母）取整数后的值除以第2位字符取整数后的值的结果要与第32位字符取整数后的值相等</p>
-<p>因为 md5 加密结果是32位的，要想得到满足要求的值，我们需要写脚本进行爆破</p>
+<p>这部分需要注意的是，第三个 substr 处并未加上 intval 函数，但在PHP表达式中，它会被参与算术运算，PHP会将其转换为数值</p>
+<p>:key: 对于十六进制字符串中的 <strong>a~f</strong>，转换为数值时为<strong>0</strong></p>
+<p>由此我们可以将判断式简化，假设</p>
+<p><code>x=intval(substr($pass, 1,1))</code>，<code>y=intval(substr($pass, 14,1))</code></p>
+<p>且 x&#x3D;y，那么表达式就简化为了 (x+y+x)&#x2F;x&#x3D;3，即 <code>intval(substr($pass, 31,1))</code>等于<code>3</code></p>
+<p>此时，我们需要考虑 x 是字母还是数字，如果是<code>0</code>或者<code>a~f</code>，那么 x&#x3D;0，这就意味着分母为0，表达式会出错，所以 <code>substr($pass, 1,1)</code> 必然是一个非0数字</p>
+<p>综合一下，我们需要找的字符串其 md5 值满足：</p>
+<ul>
+<li>第1、14、17个字符相同，且为数字1-9。</li>
+<li>第31个字符为数字3。</li>
+</ul>
+<blockquote>
+<p>注意：MD5哈希值是32个十六进制字符（0-9，a-f）</p>
+</blockquote>
+<p>要想得到满足要求的值，我们需要写脚本进行爆破，我们可以大胆猜测要输入的字符串应该不会太长，2<del>4位应该差不多，那么我们就尝试2</del>4位的所有字符串，看看是否能够找到符合条件的字符串，脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> string<br><span class="hljs-keyword">import</span> itertools<br><span class="hljs-keyword">import</span> time<br><span class="hljs-comment"># 字符集</span><br>chars = string.ascii_letters + string.digits<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;开始穷举2-4位字符串...&quot;</span>)<br>    total = <span class="hljs-number">0</span><br>    found = <span class="hljs-number">0</span><br>    start = time.time()<br>    <span class="hljs-comment"># 长度2</span><br>    <span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n长度<span class="hljs-subst">&#123;length&#125;</span>: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(chars) ** length:,&#125;</span> 种可能&quot;</span>)<br>        <span class="hljs-keyword">for</span> combo <span class="hljs-keyword">in</span> itertools.product(chars, repeat=length):<br>            total += <span class="hljs-number">1</span><br>            s = <span class="hljs-string">&#x27;&#x27;</span>.join(combo)<br>            h = hashlib.md5(s.encode()).hexdigest()<br>            <span class="hljs-comment"># 检查条件</span><br>            <span class="hljs-keyword">if</span> (h[<span class="hljs-number">31</span>] == <span class="hljs-string">&#x27;3&#x27;</span> <span class="hljs-keyword">and</span><br>                    h[<span class="hljs-number">1</span>] == h[<span class="hljs-number">14</span>] == h[<span class="hljs-number">17</span>] <span class="hljs-keyword">and</span><br>                    h[<span class="hljs-number">1</span>].isdigit() <span class="hljs-keyword">and</span> h[<span class="hljs-number">1</span>] != <span class="hljs-string">&#x27;0&#x27;</span>):<br>                found += <span class="hljs-number">1</span><br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n#<span class="hljs-subst">&#123;found&#125;</span> 长度<span class="hljs-subst">&#123;length&#125;</span>: <span class="hljs-subst">&#123;s&#125;</span>&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  MD5: <span class="hljs-subst">&#123;h&#125;</span>&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  位置[1,14,17,31]: <span class="hljs-subst">&#123;h[<span class="hljs-number">1</span>]&#125;</span>,<span class="hljs-subst">&#123;h[<span class="hljs-number">14</span>]&#125;</span>,<span class="hljs-subst">&#123;h[<span class="hljs-number">17</span>]&#125;</span>,<span class="hljs-subst">&#123;h[<span class="hljs-number">31</span>]&#125;</span>&quot;</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;  URL: ?pass=<span class="hljs-subst">&#123;s&#125;</span>&quot;</span>)<br>            <span class="hljs-comment"># 显示进度</span><br>            <span class="hljs-keyword">if</span> total % <span class="hljs-number">50000</span> == <span class="hljs-number">0</span>:<br>                elapsed = time.time() - start<br>                speed = total / elapsed<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;已尝试: <span class="hljs-subst">&#123;total:,&#125;</span> | 找到: <span class="hljs-subst">&#123;found&#125;</span> | 速度: <span class="hljs-subst">&#123;speed:,<span class="hljs-number">.0</span>f&#125;</span>次/秒&quot;</span>, end=<span class="hljs-string">&#x27;\r&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n\n完成! 尝试 <span class="hljs-subst">&#123;total:,&#125;</span> 次，找到 <span class="hljs-subst">&#123;found&#125;</span> 个符合条件的字符串&quot;</span>)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2025/12/31/polar-web-easy-1/11-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到的符合条件的字符串很多，随便用一个就行</p>
+<p><img src="/2025/12/31/polar-web-easy-1/11-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="XFF"><a href="#XFF" class="headerlink" title="XFF"></a>XFF</h1><blockquote>
+<p>考查点：HTTP请求头X-Forwarded-For</p>
+</blockquote>
+<p>访问链接，提示，需要以ip:1.1.1.1访问</p>
+<p><img src="/2025/12/31/polar-web-easy-1/12-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>在http中有这样一个请求头：<code>X-Forwarded-For</code>，它用于标识通过代理服务器连接到Web服务器的客户端的原始IP地址</p>
+<p>我们只需在请求头中添加这个请求头将其值设为1.1.1.1即可</p>
+<p><img src="/2025/12/31/polar-web-easy-1/12-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="rce1"><a href="#rce1" class="headerlink" title="rce1"></a>rce1</h1><blockquote>
+<p>考查点：命令执行rce、命令拼接、空格绕过</p>
+</blockquote>
+<p>访问链接，显示 <code>就过滤了个空格，能拿到flag算我输</code>，同时还给出了源码也就是过滤空格的逻辑</p>
+<p><img src="/2025/12/31/polar-web-easy-1/13-1.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-variable">$res</span> = <span class="hljs-literal">FALSE</span>;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;ip&#x27;</span>]) &amp;&amp; <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;ip&#x27;</span>]) &#123;<br>    <span class="hljs-variable">$ip</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;ip&#x27;</span>];<br>    <span class="hljs-variable">$m</span> = [];<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">preg_match_all</span>(<span class="hljs-string">&quot;/ /&quot;</span>, <span class="hljs-variable">$ip</span>, <span class="hljs-variable">$m</span>)) &#123;<br>        <span class="hljs-variable">$cmd</span> = <span class="hljs-string">&quot;ping -c 4 <span class="hljs-subst">&#123;$ip&#125;</span>&quot;</span>;<br>        <span class="hljs-title function_ invoke__">exec</span>(<span class="hljs-variable">$cmd</span>, <span class="hljs-variable">$res</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable">$res</span> = <span class="hljs-variable">$m</span>;<br>    &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>从源码中我们也知道要输入ip，那么我们怎么去进行命令执行呢？</p>
+<p>此处我们已知空格被过滤，但是并没有过滤<code>;</code>、<code>|</code>、<code>&amp;</code>等命令注入字符，我们可以尝试用这些字符拼接命令去执行，比如就使用<code>;</code></p>
+<p><img src="/2025/12/31/polar-web-easy-1/13-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们可以看到在当前目录下有 <code>fllllaaag.php</code>，大概率就是flag</p>
+<p>我们要读取其内容时必须绕过空格过滤，常见空格过滤绕过方式如下：</p>
+<blockquote>
+<p>1、${IFS}</p>
+<p>2、%09</p>
+<p>3、$IFS$9</p>
+<p>4、&lt;&gt;（cat&lt;&gt;flag）</p>
+<p>5、&lt;（cat&lt;flag）</p>
+<p>6、{cat,flag}</p>
+</blockquote>
+<p>我们可以依次尝试一下，经过尝试后发现，此题用第1、3、5中方式可以绕过</p>
+<p>此题需要注意的是，成功读取后我们并未能在页面上直接看到flag，遇到这种题，不要忘了查看网页源码，flag也许就在其中，可能是被注释掉了没有显示在页面中</p>
+<p><img src="/2025/12/31/polar-web-easy-1/13-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/12/31/polar-web-easy-1/13-4.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="GET-POST"><a href="#GET-POST" class="headerlink" title="GET-POST"></a>GET-POST</h1><blockquote>
+<p>考查点：GET、POST传参、PHP代码审计</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-comment">/*</span><br><span class="hljs-comment">PolarD&amp;N CTF</span><br><span class="hljs-comment">*/</span><br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;flag.php&#x27;</span>);<span class="hljs-comment">//文件包含，flag在flag.php文件中，不用想了你访问也没用</span><br><span class="hljs-variable">$id</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;你必须让我感受到你的真诚，用GET请求传递一下id吧，令id=1&quot;</span>;<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$id</span> == <span class="hljs-string">&#x27;1&#x27;</span>)&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;干的漂亮&quot;</span>;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;虽然我感受到了你的真诚，但还是不行，用POST请求传递一下jljcxy吧，令jljcxy=flag&quot;</span>;<br>    <span class="hljs-variable">$jljcxy</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;jljcxy&#x27;</span>];<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$jljcxy</span> == <span class="hljs-string">&#x27;flag&#x27;</span>)&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$flag</span>;<br>    &#125;<br>&#125;<br>你必须让我感受到你的真诚，用GET请求传递一下id吧，令id=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>分析源码，我们需要以 GET 方式传入 <strong>id</strong>，其值为 <strong>1</strong></p>
+<p><img src="/2025/12/31/polar-web-easy-1/14-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来要以 POST 方式传入 <strong>jljcxy</strong>，值为 <strong>flag</strong>，这样就可以获得 flag 了</p>
+<p><img src="/2025/12/31/polar-web-easy-1/14-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="被黑掉的站"><a href="#被黑掉的站" class="headerlink" title="被黑掉的站"></a>被黑掉的站</h1><blockquote>
+<p>考查点：网站.bak备份文件</p>
+</blockquote>
+<p>访问链接，提示 <code>不好意思，又黑了你一次，不过你站里的马还是很多哦？</code></p>
+<p>页面中没有功能点，查看源码也未发现有什么异常</p>
+<p><img src="/2025/12/31/polar-web-easy-1/15-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>当我们找不到任何方向时，试试扫描目录，也许会有收获</p>
+<p><img src="/2025/12/31/polar-web-easy-1/15-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>果然，我们得到两个路径：<code>/index.php.bak</code>、<code>/shell.php</code></p>
+<p>访问 <code>/index.php.bak</code>，我们可以看到有一堆字符串</p>
+<p><img src="/2025/12/31/polar-web-easy-1/15-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>访问 <code>/shell.php</code>，有一个输入框</p>
+<p><img src="/2025/12/31/polar-web-easy-1/15-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>看样子就是让我们用 <code>/index.php.bak</code> 中得到的字符串进行爆破，那我们用 <strong>burp</strong> 爆破就行了</p>
+<p><img src="/2025/12/31/polar-web-easy-1/15-5.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h1><blockquote>
+<p>考查点：PHP代码审计、php文件包含伪协议、目录遍历双写绕过</p>
+</blockquote>
+<p>访问链接，页面仅显示了 <code>我是一个什么都不会的出题人，我啥也不知道,我只知道你不是我可耐的弟弟-。-</code></p>
+<p>既然提示说不是，那么我们就要让它变成是，怎么变呢？这类型题其实就是在提示我们看看 <strong>Cookie</strong> 中有没有这样一个参数，果不其然在其中发现一个参数 <strong>didi</strong>，其值为 <strong>no</strong></p>
+<p><img src="/2025/12/31/polar-web-easy-1/16-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>那我们将其改为 <strong>yes</strong> 就行了，修改后刷新页面，我们就得到一个字符串</p>
+<p><img src="/2025/12/31/polar-web-easy-1/16-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察就知道大概率是 base 系列加密，解密得到一个路径 <code>./data/index.php</code></p>
+<p><img src="/2025/12/31/polar-web-easy-1/16-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们访问 <code>/data/index.php</code> 就行，在这里又需要我们进行代码审计</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    <span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-variable">$file</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$file</span>))<br>        <span class="hljs-variable">$file</span> = <span class="hljs-string">&#x27;1&#x27;</span>;<br>    <span class="hljs-variable">$file</span> = <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&#x27;../&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$file</span>);<br>    <span class="hljs-keyword">include_once</span>(<span class="hljs-variable">$file</span>.<span class="hljs-string">&quot;.php&quot;</span>);<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>我们需要以 GET 方式传入参数 file，传入的值中若有 <code>../</code> 会被过滤，例如：<code>../flag</code> 就会变成 <code>flag</code>，此题我们要读取的应该就是 flag.php 了</p>
+<blockquote>
+<p>若 flag.php 是纯文本 flag，我们直接绕过过滤读取即可，因为当包含一个文件时，如果文件没有PHP代码，就会直接输出其内容</p>
+<p>但若是 flag.php 中有 <code>&lt;?php ?&gt;</code>，那么我们要读取文件源码时就需要使用到 php 文件包含伪协议</p>
+<p>常见的伪协议有:</p>
+<ul>
+<li>php:&#x2F;&#x2F;filter</li>
+<li>data:&#x2F;&#x2F;text&#x2F;plain</li>
+<li>php:&#x2F;&#x2F;input</li>
+<li>file:&#x2F;&#x2F;</li>
+<li>phar:&#x2F;&#x2F;</li>
+<li>zlib:&#x2F;&#x2F;</li>
+<li>zip:&#x2F;&#x2F;</li>
+</ul>
+<p><strong>利用伪协议读取文件</strong></p>
+<p>php:&#x2F;&#x2F;filter常被利用用于读取文件</p>
+<p>zip:&#x2F;&#x2F;协议用来读取压缩包中的文件,可以配合文件上传开启后门,获取webshell</p>
+<p>phar:&#x2F;&#x2F;协议和zip协议利用方式相同</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php">php:<span class="hljs-comment">//filter常见利用方式:</span><br>php:<span class="hljs-comment">//filter/read/convert.base64-encode/resource=file 读取file文件，结果通过base64展示</span><br>php:<span class="hljs-comment">//filter/resource=file 读取file文件</span><br>php:<span class="hljs-comment">//filter/string.rot13/resource=file 读取file文件,结果通过rot13编码展示</span><br>zip:<span class="hljs-comment">//shell.php 先将shell.php压缩为zip文件,然后上传，利用zip://文件名读取</span><br>phar:<span class="hljs-comment">//shell.php 同zip伪协议</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>利用伪协议写入文件</strong></p>
+<p>data:&#x2F;&#x2F; 协议通过执行资源类型,使后面的内容当做文件内容来执行,从而造成任意代码执行</p>
+<p>php:&#x2F;&#x2F;input 协议可以访问请求的原始数据,配合文件包含漏洞可以将post请求体中的内容当做文件内容执行,从而实现任意代码执行,需要注意的是,当表单 <code>enctype=multipart/form-data</code>时,php:&#x2F;&#x2F;input将会无效</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php">data:<span class="hljs-comment">//text/plain,&lt;?php system($_GET[&#x27;a&#x27;]);?&gt;</span><br>php:<span class="hljs-comment">//input  post请求体：&lt;?php system($_GET[&#x27;a&#x27;]);?&gt;</span><br></code></pre></td></tr></table></figure>
+</blockquote>
 
                 
               </div>
